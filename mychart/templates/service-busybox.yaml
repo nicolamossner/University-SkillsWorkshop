@@ -1,0 +1,14 @@
+{{- if .Values.serviceBusybox.enabled -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-busybox-service
+  labels:
+    run: busybox
+spec:
+  ports:
+  - port: 3322
+    protocol: TCP
+  selector:
+    run: busybox
+{{- end }}

@@ -1,0 +1,17 @@
+{{- if .Values.podBusybox.enabled -}}
+apiVersion: v1
+kind: Pod
+metadata:
+  name: busybox-pod
+  labels:
+    app: busybox-pod
+spec:
+  containers:
+  - image: busybox
+    command:
+      - sleep
+      - "3600"
+    imagePullPolicy: IfNotPresent
+    name: busybox
+  restartPolicy: Always
+{{- end }}
