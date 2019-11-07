@@ -1,0 +1,15 @@
+{{- if .Values.serviceIngressController.enabled -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: ingress-controller-service
+  namespace: ingress-nginx
+  labels:
+    run: ingress-contoller-service
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+  selector:
+    name: ingress-nginx
+{{- end }}

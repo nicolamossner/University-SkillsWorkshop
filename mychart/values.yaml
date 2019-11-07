@@ -2,22 +2,45 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
+# Pod definitions
+
 podBusybox:
   enabled: true
+
+# Deployment definitions
 
 deploymentNginx:
   enabled: true
   replicaCount: 2
 
+deploymentTodoApp:
+  enabled: true
+  replicaCount: 1
+
 deploymentBusybox:
   enabled: false
   replicaCount: 2
 
+# Service definitions
+
+serviceNginx:
+  enabled: false
+
+serviceTodoApp:
+  enabled: true
+
+serviceIngressController:
+  enabled: false
+
 serviceBusybox:
   enabled: false
 
-serviceNginx:
-  enabled: true
+# Ingress definitions
 
 ingressNginx:
+  enabled: false
+
+# Configmap definitions
+
+configmap:
   enabled: true

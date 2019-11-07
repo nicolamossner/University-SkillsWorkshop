@@ -8,6 +8,7 @@
 - Diagram
 
 ### Why do we use it?
+- 
 
 ## Helm
 - Define resources in yaml files
@@ -58,6 +59,8 @@ helm upgrade mychart-1.0 .\mychart\
 ```bash
 kubectl get pods -o wide
 kubectl exec -it busybox-pod sh
+# or directly execute the command, passing it into container
+kubectl exec -it busybox-pod -- wget <POD_IP>:<PORT>
 # Access the web server
 wget <POD_IP>:<PORT> # Example: wget 10.1.75.23:80
 ls
@@ -76,12 +79,28 @@ kubectl delete pod <POD_NAME>
 - Enable `serviceNginx` in `values.yaml`
 ```bash
 helm upgrade mychart-1.0 .\mychart\
-# Observe out the endpoints
+# Observe the endpoints
 kubectl get services -o wide # See `SELECTOR`
 kubectl describe service my-nginx-service # See `Endpoints`
 kubectl exec -it busybox-pod sh
 wget <CLUSTER_IP>:<PORT> # Example: wget 10.104.111.204:80
+```
 
+### Access from web-browser
+- Enable `serviceTodoApp` and `deploymentTodoApp` in `values.yaml`
+```bash
+# Observe EXTERNAL-IP
+helm upgrade mychart-1.0 .\mychart\
+```
+- Open localhost in browser.
+
+### Scale a deployment
+- Scale to zero pods, try to access, scale back up.
+```bash
+kubectl scale deployment my-nginx-deployment --replicas=0
+kubectl scale deployment my-nginx-deployment --replicas=4
+# Introduce a horizontal-pod-autoscaler
+kubectl autoscale deployment my-nginx-deployment --min=2 --max=6
 ```
 
 

@@ -1,0 +1,22 @@
+{{- if .Values.deploymentTodoApp.enabled -}}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo-app-deployment
+spec:
+  selector:
+    matchLabels:
+      run: todo-app
+  replicas: {{ .Values.deploymentTodoApp.replicaCount }}
+  template:
+    metadata:
+      labels:
+        run: todo-app
+    spec:
+      containers:
+      - name: todo-app
+        image: prydonius/todo:1.0.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+{{- end }}

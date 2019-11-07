@@ -1,0 +1,14 @@
+{{- if .Values.serviceTodoApp.enabled -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: todo-app-service
+  labels:
+    run: todo-app
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    run: todo-app
+{{- end }}
