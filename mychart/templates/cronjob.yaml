@@ -1,3 +1,4 @@
+{{- if .Values.cronjob.enabled -}}
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
@@ -16,3 +17,4 @@ spec:
             - -c
             - date; echo Hello from the Kubernetes cluster
           restartPolicy: Never
+{{- end }}

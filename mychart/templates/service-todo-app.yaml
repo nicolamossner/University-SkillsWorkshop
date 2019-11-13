@@ -6,7 +6,7 @@ metadata:
   labels:
     run: todo-app
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   ports:
   - port: 80
   selector:

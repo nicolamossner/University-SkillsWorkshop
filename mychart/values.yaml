@@ -24,7 +24,7 @@ deploymentBusybox:
 # Service definitions
 
 serviceNginx:
-  enabled: false
+  enabled: true
 
 serviceTodoApp:
   enabled: true
@@ -43,4 +43,9 @@ ingressNginx:
 # Configmap definitions
 
 configmap:
-  enabled: true
+  enabled: false
+
+# Cron job definitions
+
+cronjob:
+  enabled: false
