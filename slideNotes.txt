@@ -1,0 +1,43 @@
+Not much time for a very interesting and complex topic.​
+But it can also be simple if we focus on the basic building blocks.​
+
+Developed by Google, in Go programming language, in 2014.​
+Along with the Kubernetes v1.0 release, Google partnered with the Linux Foundation to form the Cloud Native Computing Foundation (CNCF) and offered Kubernetes as a seed technology.​
+
+What is ResDiary? -> Next slide​
+Why do we use it? -> Scenario
+
+Scenario from last week:​
+- Actions we took: provision a new VM to spread the workload​
+     - Network Interface, Public IP, VM, Firewall rules, etc.​
+     - Even with all this defined in Terraform, it still takes a while​
+Would there have been a better, faster, easier, more automated way to deal with this?​
+- I'll try and answer this question with the next slide.​
+
+Motivations:
+- From speaking with those that are involved in that decision making.​
+Benefits:​
+- Updates: with no downtime, have multiple pods, loadbalance between them.​
+- Scaling: to deal with different workloads.​
+- Vm start up (in region of 10-30min), Containers (within seconds)
+
+Most of the time we don't really work or care about Nodes, we usually work with pods.​
+Nodes are abstracted away.​
+Our pods run on them but we don't care on which one.
+
+Containers within a Pod share an IP address and port space, and can find each other via localhost​
+
+​If we hard code the IP-address to access a pod, or access it through our browser.​
+What if the pod dies and a new pod is created by the deployment?​
+
+​A Kubernetes Service is an abstraction which defines:​
+- Set of pods with same functionality​
+- Running somewhere in your cluster
+
+Within 2 minutes we went from 1 to 7 instances of our application.​
+Scaled back down to 1 once the traffic stopped.​
+Use resources elsewhere, instead of permanent VMs that use resources constantly.​
+
+Micro VMs: more secure, isolated than containers (containers sharte OS, kernel), through hardware virtualization technology. Allow multi-tenancy clusters.​
+Kubernetes as Hypervisor: a virtual machine could be containerized with little modification.
+

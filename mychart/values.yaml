@@ -17,9 +17,14 @@ deploymentTodoApp:
   enabled: true
   replicaCount: 1
 
+deploymentApache:
+  enabled: true
+  replicaCount: 1
+
 deploymentBusybox:
   enabled: false
   replicaCount: 2
+
 
 # Service definitions
 
@@ -27,6 +32,9 @@ serviceNginx:
   enabled: true
 
 serviceTodoApp:
+  enabled: true
+
+serviceApache:
   enabled: true
 
 serviceIngressController:
